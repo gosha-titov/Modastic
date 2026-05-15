@@ -1,0 +1,70 @@
+public extension RandomAccessCollection {
+    
+    /// Safely accesses the element at the specified index, returning `nil` if the index is out of bounds.
+    /// ## Example
+    /// ```
+    /// let array = [1, 2, 3]
+    /// array[safe: 2] // Optional(3)
+    /// array[safe: 5] // nil
+    /// ```
+    subscript(safe index: Index) -> Element? {
+        get {
+            guard indices.contains(index) else { return nil }
+            return self[index]
+        }
+    }
+    
+}
+
+
+public extension RandomAccessCollection where Self: MutableCollection {
+    
+    /// Sorts the collection in place, using the value at the specified key path for comparison.
+    /// ## Example
+    /// ```
+    /// struct Person {
+    ///     let name: String, age: Int
+    /// }
+    /// var persons = [
+    ///     Person(name: "Alice", age: 31),
+    ///     Person(name: "James", age: 23),
+    ///     Person(name: "Kevin", age: 57)
+    /// ]
+    /// persons.sort(by: \.age, using: > )
+    /// /* [Person(name: "Kevin", age: 57),
+    ///     Person(name: "Alice", age: 31),
+    ///     Person(name: "James", age: 23)
+    /// ] */
+    /// ```
+    /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
+    /// - Parameter areInIncreasingOrder: A predicate that returns `true`
+    ///   if its first argument should be ordered before its second argument; otherwise, `false`.
+    @inlinable @inline(__always)
+    mutating func sort<T>(by keyPath: KeyPath<Element, T>, using areInIncreasingOrder: (T, T) throws -> Bool) rethrows {
+        try sort { try areInIncreasingOrder($0[keyPath: keyPath], $1[keyPath: keyPath]) }
+    }
+    
+    /// Sorts the collection in place, using the value at the specified key path for comparison.
+    /// ## Example
+    /// ```
+    /// struct Person {
+    ///     let name: String, age: Int
+    /// }
+    /// var persons = [
+    ///     Person(name: "Alice", age: 31),
+    ///     Person(name: "James", age: 23),
+    ///     Person(name: "Kevin", age: 57)
+    /// ]
+    /// persons.sort(by: \.age)
+    /// /* [Person(name: "James", age: 23),
+    ///     Person(name: "Alice", age: 31),
+    ///     Person(name: "Kevin", age: 57)
+    /// ] */
+    /// ```
+    /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
+    @inlinable @inline(__always)
+    mutating func sort<T: Comparable>(by keyPath: KeyPath<Element, T>) {
+        sort { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+    }
+    
+}
