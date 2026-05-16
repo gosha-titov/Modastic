@@ -1,3 +1,7 @@
+
+<img width="1344" height="768" alt="modastic_logo" src="https://github.com/user-attachments/assets/6bec451c-ebbf-48ef-9d26-8d9d9cfaf836" />
+
+
 # Modastic
 
 A comprehensive collection of **hundreds** of battle-tested Swift extensions that make everyday coding cleaner, safer, and more expressive.
