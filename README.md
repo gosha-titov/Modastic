@@ -14,9 +14,9 @@ The library contains nearly a thousand carefully crafted extensions and utilitie
 
 `Modastic` includes dozens of helpful extensions, each with detailed documentation. 
 Some are syntactic sugar to improve code readability, while others introduce entirely new functionality. 
-All of this is designed so that you can enjoy *Swift* development.
+All of this is designed so that you can enjoy Swift development.
 
-For me personally, these extensions have become a part of the *Swift* programming language, and I can't imagine development without this library. 
+For me personally, these extensions have become a part of the Swift programming language, and I can't imagine development without this library. 
 I still update it and add new features from time to time.
 
 
@@ -67,26 +67,26 @@ todos.forEach(where: \.isCompleted) {
 ```
 
 ```swift
-struct Person {
+struct Employee {
     let name: String, age: Int, salary: Int
 }
 
-let people = [
-    Person(name: "Alice", age: 31, salary: 111),
-    Person(name: "James", age: 23, salary: 222),
-    Person(name: "Kevin", age: 57, salary: 333)
+let employees = [
+    Employee(name: "Alice", age: 31, salary: 111),
+    Employee(name: "James", age: 23, salary: 222),
+    Employee(name: "Kevin", age: 57, salary: 333)
 ]
 
-people.sorted(by: \.age, using: >)
+employees.sorted(by: \.age, using: >)
 // Kevin, Alice, James
 
-people.sorted(by: \.salary)
+employees.sorted(by: \.salary)
 // Alice, James, Kevin
 
-people.min(by: \.age)
+employees.min(by: \.age)
 // James
 
-people.max(by: \.salary)
+employees.max(by: \.salary)
 // Kevin
 ```
 
