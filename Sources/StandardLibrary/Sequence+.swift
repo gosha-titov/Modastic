@@ -3,15 +3,15 @@ public extension Sequence {
     /// Calls the specified closure on each element that satisfies the given predicate in the sequence in the same order as a `for-in-where` loop.
     /// ## Example
     /// ```
-    /// struct Task {
+    /// struct Todo {
     ///     let title: String, isCompleted: Bool
     /// }
-    /// let tasks = [
-    ///     Task(title: "Design layout", isCompleted: true),
-    ///     Task(title: "Implement feature", isCompleted: false),
-    ///     Task(title: "Fix bugs", isCompleted: true)
+    /// let todos = [
+    ///     Todo(title: "Design layout", isCompleted: true),
+    ///     Todo(title: "Implement feature", isCompleted: false),
+    ///     Todo(title: "Fix bugs", isCompleted: true)
     /// ]
-    /// tasks.forEach(where: \.isCompleted) {
+    /// todos.forEach(where: \.isCompleted) {
     ///     print("Completed: \($0.title)")
     /// }
     /// // Prints "Completed: Design layout"
@@ -47,16 +47,13 @@ public extension Sequence {
     /// struct Person {
     ///     let name: String, age: Int
     /// }
-    /// let persons = [
+    /// let people = [
     ///     Person(name: "Alice", age: 31),
     ///     Person(name: "James", age: 23),
     ///     Person(name: "Kevin", age: 57)
     /// ]
-    /// persons.sorted(by: \.age, using: > )
-    /// /* [Person(name: "Kevin", age: 57),
-    ///     Person(name: "Alice", age: 31),
-    ///     Person(name: "James", age: 23)
-    /// ] */
+    /// people.sorted(by: \.age, using: > )
+    /// // Kevin, Alice, James
     /// ```
     /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
     /// - Parameter areInIncreasingOrder: A predicate that returns `true`
@@ -78,10 +75,7 @@ public extension Sequence {
     ///     Person(name: "Kevin", age: 57)
     /// ]
     /// let sortedPersons = persons.sorted(by: \.age)
-    /// /* [Person(name: "James", age: 23),
-    ///     Person(name: "Alice", age: 31),
-    ///     Person(name: "Kevin", age: 57)
-    /// ] */
+    /// // James, Alice, Kevin
     /// ```
     /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
     /// - Returns: A sorted array of the sequence’s elements.
@@ -102,7 +96,7 @@ public extension Sequence {
     ///     Person(name: "Kevin", age: 57)
     /// ]
     /// let oldest = persons.max(by: \.age)
-    /// // Person(name: "Kevin", age: 57)
+    /// // Kevin
     /// ```
     /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
     /// - Returns: The sequence’s maximum element if the sequence is not empty; otherwise, `nil`.
@@ -123,7 +117,7 @@ public extension Sequence {
     ///     Person(name: "Kevin", age: 57)
     /// ]
     /// let youngest = persons.min(by: \.age)
-    /// // Person(name: "James", age: 23)
+    /// // James
     /// ```
     /// - Parameter keyPath: A key path to a `Comparable` value in `Element`.
     /// - Returns: The sequence’s maximum element if the sequence is not empty; otherwise, `nil`.
