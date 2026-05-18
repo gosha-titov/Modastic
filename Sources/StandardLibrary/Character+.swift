@@ -25,53 +25,7 @@ public extension Character {
     static var tab: Character { "\u{0009}" }
     
     
-    /// An uppercase version of this character.
-    /// ## Example
-    /// ```
-    /// let char = Character("a")
-    /// char.uppercased() // Character("A")
-    /// ```
-    @inlinable @inline(__always)
-    func uppercased() -> Character {
-        return String(self).uppercased().first ?? .space
-    }
-    
-    /// A lowercase version of this character.
-    /// ## Example
-    /// ```
-    /// let char = Character("A")
-    /// char.lowercased() // Character("a")
-    /// ```
-    @inlinable @inline(__always)
-    func lowercased() -> Character {
-        return String(self).lowercased().first ?? .space
-    }
-    
-    
     // MARK: Methods
-    
-    /// Makes this character uppercase.
-    /// ## Example
-    /// ```
-    /// var char = Character("a")
-    /// char.uppercase() // Character("A")
-    /// ```
-    @inlinable @inline(__always)
-    mutating func uppercase() {
-        self = uppercased()
-    }
-    
-    /// Makes this character lowercase.
-    /// ## Example
-    /// ```
-    /// var char = Character("A")
-    /// char.lowercase() // Character("a")
-    /// ```
-    @inlinable @inline(__always)
-    mutating func lowercase() {
-        self = lowercased()
-    }
-    
     
     /// Returns an optional Int value converted from this character.
     /// ## Example
