@@ -127,7 +127,7 @@ Or in `Package.swift`:
 dependencies: [
     .package(
         url: "https://github.com/gosha-titov/Modastic.git",
-        .upToNextMinor(from: "1.0.1")
+        .upToNextMinor(from: "1.1.0")
     )
 ]
 ```
